@@ -8,7 +8,7 @@ auto vs std::function
 
 auto-declared holding a closure has the same type as the closure, and as such it uses only as much memory as the closure requires.
 
-std::function may allocate heap memory to store the closure.
+std::function-declared variable holds a closure with **fixed size**.The size may not be adequate for closure, and when that's the case, std::function will allocate heap memory to store the closure.
 
 std::function may be bigger and slower than the auto approach!!!
 

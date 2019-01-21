@@ -30,7 +30,8 @@ Distinguish initialization from assignment. Different function calls are invovle
     std::atomic<int> ai2(0);  // fine
     std::atomic<int> ai3 = 0;  // error
 
-## Prohibits implicit narrowing conversions
+## Prohibits implicit narrowing conversions among built-in types
+   If the value of an expression in a braced initializer isn't guaranteed to be expressiable by the type of the object being initialized, the code won't compile.
 
     double x, y, z;
     int sum1{x+y+x};  // error, only warnning in g++ 5.2.0
@@ -38,6 +39,7 @@ Distinguish initialization from assignment. Different function calls are invovle
     int sum3 = x+y+z;  // fine
 
 ## Immunity to C++'s most vexing parse
+     **C++’s rule that anything that can be parsed as a declaration must be interpreted as one**
 
     Widget w1(10);  // call Widget constructor with 10
     Widget w2();  // most vexing parse! Declare a function!!!
@@ -45,7 +47,9 @@ Distinguish initialization from assignment. Different function calls are invovle
 
 ## Drawback: with std::initializer_list
 
-See initializer_list.cpp
+    See initializer_list.cpp
+
+    Empty braces mean no arguments, not an empty std::initializer_list.
 
 ## Things to Remember
 

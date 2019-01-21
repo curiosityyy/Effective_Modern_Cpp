@@ -12,9 +12,9 @@ Sometimes, the auto may offer undesired type.
     auto highPriority = features(w)[5];
     processWidget(w, highPriority);  // Undefined behavior!
 
-`std::vector<bool>::operator[]` return an object of type `std::vector<bool>::reference`.
+`std::vector<bool>::operator[]` return an object of type `std::vector<bool>::reference`.**C++ forbids references to bits.**
 
-`std::vector<bool>` represent its bools in packed form, one bit per bool. Cannot return reference
+`std::vector<bool>` represent its bools in packed form, one bit per bool. Cannot return reference. 
 
 One implemenation of `std::vector<bool>::reference` contains a pointer to the machine word holding the referenced bit, plus the offset.
 
@@ -22,7 +22,7 @@ Using auto, the auto will be type `std::vector<bool>::reference`, with a pointer
 
 `std::vector<bool>::reference` is called proxy classes.
 
-Proxy class include shared_ptr, uniq_ptr and so on.
+Proxy class include shared_ptr, unique_ptr and so on.
 
     Matrx sum = m1 + m2 + m3 + m4;
 
