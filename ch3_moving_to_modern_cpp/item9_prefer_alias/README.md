@@ -13,7 +13,20 @@
 See the alias.cpp.
 
 The names of dependent types must be preceded by typename.
-Don't know whether MyAllocList2<T>::type is a data member.
+Don't know whether MyAllocList<T>::type is a data member. Something like below:
+``` c++
+    class Wine { ... };
+    
+    template<>
+    class MyAllocList<Wine> {
+    private:
+      enum class WineType
+      { White, Red, Rose };
+    
+      WineType type;          // type is a data member!
+      ...
+    };
+```
 
 Using alias template (using), this need for typename vanished.
 
